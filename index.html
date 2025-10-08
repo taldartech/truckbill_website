@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="TruckBill - Smart billing and compliance solutions for the transport industry. Streamline your operations with our comprehensive transport management system.">
+    <meta name="keywords" content="transport billing, trucking software, logistics management, transport compliance, fleet management">
+    <meta name="author" content="TruckBill">
+    <meta name="theme-color" content="#4CAF50">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://truckbill.com/">
+    <meta property="og:title" content="TruckBill - Smart Billing & Compliance for Transport Industry">
+    <meta property="og:description" content="Streamline your transport business with our comprehensive billing and compliance solutions.">
+    <meta property="og:image" content="images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TruckBill - Smart Billing & Compliance for Transport Industry">
+    <meta name="twitter:description" content="Streamline your transport business with our comprehensive billing and compliance solutions.">
+    <meta name="twitter:image" content="images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    
+    <title>TruckBill - Smart Billing & Compliance for Transport Industry</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Fallback Fonts -->
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+    </noscript>
+    
+    <!-- Preload Scripts -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js" as="script" crossorigin="anonymous" onload="this.onload=null;this.rel='preload';">
+    <link rel="preload" href="js/main.js" as="script">
+    
+    <!-- Critical CSS -->
+    <style>
+        /* Critical CSS for above-the-fold content */
+        .no-js #preloader { display: none; }
+        
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease-out;
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        #preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Prevent scrolling when preloader is active */
+        body.preload {
+            overflow: hidden;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Fallback for browsers that don't support CSS variables */
+        :root {
+            --primary: #4CAF50;
+            --secondary: #2196F3;
+            --accent: #FFC107;
+            --dark: #212529;
+            --light: #f8f9fa;
+        }
+    </style>
+</head>
+<body class="preload">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#" aria-label="TruckBill Home">
+                <img src="images/logo.png" alt="TruckBill Logo" height="40" class="d-inline-block align-text-top me-2">
+                TruckBill
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#solutions">Solutions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Success Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero position-relative" id="home" style="min-height: 80vh; display: flex; align-items: center;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Smart billing and compliance that drives growth.</h1>
+                    <p class="lead">Save lakhs in TDS & penalties while simplifying transport operations.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="./images/dashboard-preview.png" alt="TruckBill Dashboard" class="dashboard-img">
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#transport-agency" class="btn btn-primary btn-lg px-4">I'm a Transport Agency</a>
+                        <a href="#broker-agency" class="btn btn-outline-primary btn-lg px-4">I'm a Broker Agency</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="section bg-light-gray" id="solutions">
+        <div class="container">
+            <h2 class="text-center section-title">Our Solutions</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>For Transport Agencies</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Fleet-based management</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Truck compliance made easy</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Automated billing & invoicing</li>
+                        </ul>
+                        <a href="#transport-features" class="btn btn-primary mt-3">See Full Features</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>For Broker Agencies</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Trip-based invoicing</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Vendor & driver settlements</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> On-demand truck management</li>
+                        </ul>
+                        <a href="#broker-features" class="btn btn-primary mt-3">See Full Features</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="text-center section-title">Features</h2>
+            
+            <!-- Transport Agency Features -->
+            <div class="row align-items-center mb-5" id="transport-features">
+                <div class="col-lg-6">
+                    <h3>Transport Agency Features</h3>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-file-invoice text-primary"></i>
+                        </div>
+                        <div>
+                            <h5>Fleet Billing & LR Management</h5>
+                            <p>Streamline your billing process with automated LR generation and management.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-robot text-primary"></i>
+                        </div>
+                        <div>
+                            <h5>TDS/GST Automation</h5>
+                            <p>Automated tax calculations and compliance to save time and reduce errors.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-bell text-primary"></i>
+                        </div>
+                        <div>
+                            <h5>E-way Bill Alerts</h5>
+                            <p>Never miss an e-way bill deadline with automated alerts and notifications.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <div class="me-3">
+                            <i class="fas fa-chart-line text-primary"></i>
+                        </div>
+                        <div>
+                            <h5>Cash Flow Reports</h5>
+                            <p>Get detailed insights into your financials with comprehensive reporting.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="feature-image-wrapper">
+                        <img src="./images/transport-features.png" alt="Transport Agency Features" class="feature-img">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Broker Agency Features -->
+            <div class="row align-items-center mt-5" id="broker-features">
+                <div class="col-lg-6 order-lg-2">
+                    <h3>Broker Agency Features</h3>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-shipping-fast text-primary"></i>
+                        </div>
+                        <div>
+                            <h5>Pay-per-Trip / LR Based Management</h5>
+                            <p>Efficiently manage trips and LRs with our intuitive platform.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-money-bill-wave text-primary"></i>
+                        </div>
+                        <div>
+                            <h5>Vendor & Driver Settlements</h5>
+                            <p>Streamline your payment processes with automated settlements.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-id-card text-primary"></i>
+                        </div>
+                        <div>
+                            <h5>KYC Verification (PAN)</h5>
+                            <p>Verify vendors and drivers with our integrated KYC system.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <div class="me-3">
+                            <i class="fas fa-file-invoice-dollar text-primary"></i>
+                        </div>
+                        <div>
+                            <h5>Instant Digital Invoices</h5>
+                            <p>Generate and send professional invoices in seconds.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="feature-image-wrapper">
+                        <img src="./images/broker-features.png" alt="Broker Agency Features" class="feature-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section bg-light-gray" id="testimonials">
+        <div class="container">
+            <h2 class="text-center section-title">Success Stories</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="testimonial-card">
+                        <div class="text-center mb-4">
+                            <img src="images/logo.png" alt="TruckBillCustomer" class="rounded-circle mb-3" style="width: 80px; height: 80px; object-fit: cover;">
+                            <h4>Leading Transporter for Cement Industry</h4>
+                            <p class="text-muted">Leading Transport Company</p>
+                        </div>
+                        <div class="text-center mb-4">
+                            <div class="d-flex justify-content-center mb-3">
+                                <div class="mx-3 text-center">
+                                    <div class="display-6 fw-bold text-primary">₹30,000+</div>
+                                    <div class="text-muted">Saved Monthly</div>
+                                </div>
+                                <div class="mx-3 text-center">
+                                    <div class="display-6 fw-bold text-primary">3+ Hrs</div>
+                                    <div class="text-muted">Saved Daily</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="lead text-center mb-4">"TruckBill has transformed how we manage our fleet and billing. The TDS automation alone has saved us thousands in penalties."</p>
+                        <div class="text-center">
+                            <img src="images/dashboard-comparison.png" alt="Before/After Dashboard" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="section-title text-start">About Us</h2>
+                    <h3 class="mb-4">Compliance-first ERP for transport & broker agencies</h3>
+                    <p class="lead">At TruckBill, we're on a mission to simplify logistics operations through technology. Our platform is built by industry experts who understand the unique challenges of the transport sector.</p>
+                    <p>We combine deep domain expertise with cutting-edge technology to deliver solutions that drive efficiency, ensure compliance, and boost profitability for transport and broker agencies of all sizes.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <div class="feature-icon mb-4">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+                        <h4>Our Team</h4>
+                        <p class="lead">A dedicated team of logistics and technology experts working together to revolutionize the transport industry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Have questions? We're here to help. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+            
+            <div class="row g-5">
+                <!-- Contact Form -->
+                <div class="col-lg-6">
+                    <div class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <form id="contactForm" class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your name.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" placeholder="your@email.com" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                    <input type="tel" class="form-control" id="phone" placeholder="+91 XXXXXXXXXX">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Your Message <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="How can we help you?" required></textarea>
+                                <div class="invalid-feedback">
+                                    Please enter your message.
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">
+                                <i class="fas fa-paper-plane me-2"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <p class="text-white-50 mb-4">Feel free to reach out to us through any of these channels. We're always happy to help!</p>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>Email Us</h5>
+                                <a href="mailto:support@truckbill.in">support@truckbill.in</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Call Us</h5>
+                                <a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Our Location</h5>
+                                <p>Rajasthan, India</p>
+                            </div>
+                        </div>
+                        
+                        <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                        
+                        <div class="social-links mt-5">
+                            <h5 class="mb-3">Follow Us</h5>
+                            <div class="d-flex gap-3">
+                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background Shapes -->
+        <div class="bg-shape bg-shape-1"></div>
+        <div class="bg-shape bg-shape-2"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5>TruckBill</h5>
+                    <p>Smart billing and compliance solutions for the transport industry.</p>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#solutions" class="text-white text-decoration-none">Solutions</a></li>
+                        <li><a href="#features" class="text-white text-decoration-none">Features</a></li>
+                        <li><a href="#testimonials" class="text-white text-decoration-none">Success Stories</a></li>
+                        <li><a href="#about" class="text-white text-decoration-none">About Us</a></li>
+                        <li><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Terms of Service</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 TruckBill. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    
+    <!-- Smooth Scrolling and Preloader Handling -->
+    <script>
+    // Handle preloader and scrolling
+    document.addEventListener('DOMContentLoaded', function() {
+        // Remove preloader after page loads
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                document.body.classList.remove('preload');
+                
+                // Remove preloader from DOM after animation
+                setTimeout(() => {
+                    preloader.remove();
+                }, 500);
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#' || targetId === '#!') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    
+                    // Get the header height
+                    const headerHeight = document.querySelector('.navbar').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without adding to history
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        window.location.hash = targetId;
+                    }
+                }
+            });
+        });
+        
+        // Initialize ScrollReveal after a short delay
+        setTimeout(() => {
+            if (typeof ScrollReveal !== 'undefined') {
+                ScrollReveal().reveal('.feature-card, .testimonial-card, .section-title', {
+                    delay: 200,
+                    distance: '20px',
+                    origin: 'bottom',
+                    interval: 100,
+                    easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                    reset: true
+                });
+            }
+        }, 100);
+    });
+    </script>
+    
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
