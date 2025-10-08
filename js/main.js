@@ -59,35 +59,42 @@ function highlightNav() {
         }
     });
 }
-
 window.addEventListener('scroll', highlightNav);
 
 // Smooth scrolling for anchor links with offset and active state
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
         const targetId = this.getAttribute('href');
-        if (targetId === '#' || targetId === '#!') return;
+        if (targetId === '#' || targetId === '#!') return true;
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
-            const headerOffset = 100;
+            e.preventDefault();
+            
+            // Get the header height with a small offset
+            const headerHeight = document.querySelector('.navbar').offsetHeight + 20;
             const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
             
-            // Add ripple effect
-            const ripple = document.createElement('span');
-            ripple.classList.add('ripple-effect');
-            this.appendChild(ripple);
-            
-            // Remove old ripples
-            const ripples = this.querySelectorAll('.ripple-effect');
-            if (ripples.length > 1) {
-                ripples[0].remove();
+            // Use smooth scrolling if supported
+            try {
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            } catch (e) {
+                // Fallback for browsers that don't support smooth scrolling
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'auto'
+                });
             }
             
-            // Smooth scroll
+            // Update URL without adding to history
+            if (history.pushState) {
+                history.pushState(null, null, targetId);
+            } else {
+                window.location.hash = targetId;
             window.scrollTo({
                 top: offsetPosition,
                 behavior: 'smooth'

@@ -23,6 +23,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback for browsers that don't support background-clip: text */
+  display: inline-block;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
@@ -33,6 +43,126 @@ h1, h2, h3, h4, h5, h6 {
 p.lead {
   font-size: 1.25rem;
   font-weight: 300;
+}
+
+/* Book Demo Modal */
+#bookDemoModal .modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+#bookDemoModal .modal-header {
+    border-bottom: 1px solid #eee;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+#bookDemoModal .modal-title {
+    font-weight: 600;
+    color: white;
+}
+
+#bookDemoModal .btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+#bookDemoModal .form-label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.4rem;
+    display: block;
+}
+
+#bookDemoModal .form-control, 
+#bookDemoModal .form-select {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#bookDemoModal .form-control:focus, 
+#bookDemoModal .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25);
+}
+
+#bookDemoModal .form-check {
+    margin-bottom: 0.5rem;
+}
+
+#bookDemoModal .form-check-input {
+    margin-top: 0.2em;
+}
+
+#bookDemoModal .form-check-label {
+    font-weight: 400;
+    color: #444;
+}
+
+#bookDemoModal .modal-footer {
+    border-top: 1px solid #eee;
+    padding: 1.2rem;
+}
+
+#bookDemoModal .btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+#bookDemoModal .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+}
+
+#bookDemoModal .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+#demoForm .text-danger {
+    color: #dc3545 !important;
+    font-weight: 500;
+}
+
+/* Floating Action Button */
+.floating-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    width: 180px;
+    height: 60px;
+    border-radius: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.floating-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+.floating-btn i {
+    font-size: 1.2rem;
+    margin-right: 8px;
 }
 
 /* Buttons */
@@ -532,11 +662,11 @@ body {
 
 /* Dashboard Image */
 .dashboard-img {
-    max-width: 120%;
-    width: 120%;
+    max-width: 140%;
+    width: 140%;
     height: auto;
     margin-left: -10%;
-    opacity: 0.9;
+    opacity: 0.8;
     transition: transform 0.3s ease;
 }
 
@@ -613,8 +743,10 @@ body {
 
 #contact .section-title {
   position: relative;
-  margin-bottom: 60px;
-  text-align: center;
+  margin: 0 auto 60px;
+  text-align: center !important;
+  width: 100%;
+  display: block;
   color: var(--dark);
 }
 
@@ -852,32 +984,34 @@ body {
 }
 
 .feature-box:hover p {
-  color: #4a4a4a;
+  color: var(--dark);
 }
 
+/* Section Title */
 .section-title {
-  position: relative;
-  margin-bottom: 60px;
-  text-align: center;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  width: 100%;
 }
 
-.section-title:after {
+.section-title::after {
   content: '';
   position: absolute;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   left: 50%;
   bottom: -15px;
   transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: var(--primary);
-}
-
-/* Testimonials */
-.testimonial-section {
-  position: relative;
-  overflow: hidden;
+  border-radius: 2px;
 }
 
 .testimonial-card {
