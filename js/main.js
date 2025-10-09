@@ -1,5 +1,5 @@
 // Preloader
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     const preloader = document.getElementById('preloader');
     if (preloader) {
         setTimeout(() => {
@@ -13,13 +13,13 @@ window.addEventListener('load', function() {
 let lastScrollTop = 0;
 const navbar = document.querySelector('.navbar');
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
     // Add/remove scrolled class based on scroll position
     if (scrollTop > 50) {
         navbar.classList.add('scrolled');
-        
+
         // Hide/show navbar on scroll
         if (scrollTop > lastScrollTop && scrollTop > 200) {
             // Scrolling down
@@ -32,7 +32,7 @@ window.addEventListener('scroll', function() {
         navbar.classList.remove('scrolled');
         navbar.style.transform = 'translateY(0)';
     }
-    
+
     lastScrollTop = scrollTop;
 });
 
@@ -41,17 +41,17 @@ const sections = document.querySelectorAll('section[id]');
 
 function highlightNav() {
     if (!sections.length) return;
-    
+
     const scrollY = window.pageYOffset;
-    
+
     sections.forEach(current => {
         const sectionHeight = current.offsetHeight;
         const sectionTop = current.offsetTop - 100;
         const sectionId = current.getAttribute('id');
-        
+
         const navLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
         if (!navLink) return;
-        
+
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             navLink.classList.add('active');
         } else {
@@ -63,19 +63,19 @@ window.addEventListener('scroll', highlightNav);
 
 // Smooth scrolling for anchor links with offset and active state
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
         if (targetId === '#' || targetId === '#!') return true;
-        
+
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
             e.preventDefault();
-            
+
             // Get the header height with a small offset
             const headerHeight = document.querySelector('.navbar').offsetHeight + 20;
             const elementPosition = targetElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-            
+
             // Use smooth scrolling if supported
             try {
                 window.scrollTo({
@@ -89,25 +89,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     behavior: 'auto'
                 });
             }
-            
+
             // Update URL without adding to history
             if (history.pushState) {
                 history.pushState(null, null, targetId);
             } else {
                 window.location.hash = targetId;
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-            
-            // Close mobile menu if open
-            const navbarToggler = document.querySelector('.navbar-toggler');
-            if (navbarToggler && !navbarToggler.classList.contains('collapsed')) {
-                navbarToggler.click();
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                const navbarToggler = document.querySelector('.navbar-toggler');
+                if (navbarToggler && !navbarToggler.classList.contains('collapsed')) {
+                    navbarToggler.click();
+                }
+
+                // Update URL without page jump
+                history.pushState(null, null, targetId);
             }
-            
-            // Update URL without page jump
-            history.pushState(null, null, targetId);
         }
     });
 });
@@ -118,17 +119,17 @@ function createRipple(event) {
     const circle = document.createElement('span');
     const diameter = Math.max(button.clientWidth, button.clientHeight);
     const radius = diameter / 2;
-    
+
     circle.style.width = circle.style.height = `${diameter}px`;
     circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
     circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
     circle.classList.add('ripple');
-    
+
     const ripple = button.getElementsByClassName('ripple')[0];
     if (ripple) {
         ripple.remove();
     }
-    
+
     button.appendChild(circle);
 }
 
@@ -145,19 +146,19 @@ document.addEventListener('DOMContentLoaded', () => {
 // Form submission handling
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         // Get form data
         const formData = new FormData(this);
         const formObject = {};
         formData.forEach((value, key) => {
             formObject[key] = value;
         });
-        
+
         // Here you would typically send the form data to a server
         console.log('Form submitted:', formObject);
-        
+
         // Show success message
         alert('Thank you for your message! We will get back to you soon.');
         this.reset();
@@ -167,13 +168,13 @@ if (contactForm) {
 // Enhanced Animation on Scroll with Intersection Observer
 const animateOnScroll = () => {
     const elements = document.querySelectorAll('.animate-on-scroll');
-    
+
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.15
     };
-    
+
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -182,7 +183,7 @@ const animateOnScroll = () => {
             }
         });
     }, observerOptions);
-    
+
     elements.forEach(element => {
         observer.observe(element);
     });
@@ -201,10 +202,10 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    
+
     // Initialize animations
     animateOnScroll();
-    
+
     // Add hover effect to feature boxes
     const featureBoxes = document.querySelectorAll('.feature-box, .card, .testimonial-card');
     featureBoxes.forEach(box => {
@@ -212,7 +213,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const rect = box.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             box.style.setProperty('--mouse-x', `${x}px`);
             box.style.setProperty('--mouse-y', `${y}px`);
         });
@@ -319,10 +320,10 @@ window.addEventListener('scroll', () => {
     const scrollPosition = window.pageYOffset;
     const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercentage = (scrollPosition / windowHeight) * 100;
-    
+
     // Update progress circle
     progressCircle.style.background = `conic-gradient(var(--primary) ${scrollPercentage}%, var(--secondary) ${scrollPercentage}% 100%)`;
-    
+
     // Toggle visibility
     if (scrollPosition > 300) {
         backToTopButton.classList.add('visible');
@@ -334,36 +335,36 @@ window.addEventListener('scroll', () => {
 // Smooth scroll to top with easing
 backToTopButton.addEventListener('click', (e) => {
     e.preventDefault();
-    
+
     const startPosition = window.pageYOffset;
     const targetPosition = 0;
     const distance = targetPosition - startPosition;
     const duration = 1000;
     let start = null;
-    
+
     function step(timestamp) {
         if (!start) start = timestamp;
         const progress = timestamp - start;
         const percentage = Math.min(progress / duration, 1);
-        
+
         // Easing function (easeInOutCubic)
-        const easeInOutCubic = t => t < 0.5 
-            ? 4 * t * t * t 
+        const easeInOutCubic = t => t < 0.5
+            ? 4 * t * t * t
             : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-        
+
         window.scrollTo(0, startPosition + distance * easeInOutCubic(percentage));
-        
+
         if (progress < duration) {
             window.requestAnimationFrame(step);
         }
     }
-    
+
     window.requestAnimationFrame(step);
 });
 
 // Initialize tooltips with custom styling
 const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-const tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl, {
         animation: true,
         placement: 'top',
@@ -424,7 +425,7 @@ const scrollReveal = ScrollReveal({
 scrollReveal.reveal('.feature-box', { interval: 200 });
 scrollReveal.reveal('.testimonial-card', { interval: 200 });
 scrollReveal.reveal('.card', { interval: 200 });
-scrollReveal.reveal('section h2, section h3', { 
+scrollReveal.reveal('section h2, section h3', {
     delay: 200,
     origin: 'left',
     distance: '50px'
@@ -434,12 +435,12 @@ scrollReveal.reveal('section h2, section h3', {
 function animateCounters() {
     const counters = document.querySelectorAll('.counter');
     const speed = 200;
-    
+
     counters.forEach(counter => {
         const target = +counter.getAttribute('data-target');
         const count = +counter.innerText;
         const increment = target / speed;
-        
+
         if (count < target) {
             counter.innerText = Math.ceil(count + increment);
             setTimeout(animateCounters, 10);
@@ -460,7 +461,7 @@ if (counterSection) {
             }
         });
     }, { threshold: 0.5 });
-    
+
     observer.observe(counterSection);
 }
 
@@ -468,12 +469,12 @@ if (counterSection) {
 const interactiveElements = document.querySelectorAll('a, button, .btn, .card, .feature-box, .testimonial-card');
 interactiveElements.forEach(element => {
     element.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-    
+
     element.addEventListener('mouseenter', () => {
         element.style.transform = 'translateY(-5px)';
         element.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
     });
-    
+
     element.addEventListener('mouseleave', () => {
         element.style.transform = 'translateY(0)';
         element.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
@@ -482,10 +483,10 @@ interactiveElements.forEach(element => {
 
 // Add loading animation to buttons with loading state
 document.querySelectorAll('.btn-loading').forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         this.classList.add('loading');
         this.setAttribute('disabled', 'disabled');
-        
+
         // Simulate loading (replace with actual async operation)
         setTimeout(() => {
             this.classList.remove('loading');
@@ -497,12 +498,12 @@ document.querySelectorAll('.btn-loading').forEach(button => {
 // Add parallax effect to elements with data-parallax attribute
 document.addEventListener('mousemove', (e) => {
     const parallaxElements = document.querySelectorAll('[data-parallax]');
-    
+
     parallaxElements.forEach(element => {
         const speed = parseFloat(element.getAttribute('data-parallax')) || 0.1;
         const x = (window.innerWidth - e.pageX * speed) / 100;
         const y = (window.innerHeight - e.pageY * speed) / 100;
-        
+
         element.style.transform = `translateX(${x}px) translateY(${y}px)`;
     });
 });
