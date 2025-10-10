@@ -18,12 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = filter_var(trim($_POST['email'] ?? ''), FILTER_VALIDATE_EMAIL);
     $message = htmlspecialchars(trim($_POST['message'] ?? ''));
 
-    // Basic validation
-    if (!$userType || !$fullName || !$companyName || !$phoneNumber || !$email) {
-        echo json_encode(['success' => false, 'message' => 'Please fill all required fields.']);
-        exit;
-    }
-
     $body = '';
     $body .= 'User Type: ' . $userType . '<br>';
     $body .= 'Name: ' . $fullName . '<br>';
@@ -47,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //Recipients
         $mail->setFrom('shalindevpura19@gmail.com', 'TruckBill');
         $mail->addAddress('team@taldartechconsultancy.com');     // Add a recipient
+        // $mail->addAddress('shalin@taldartech.in');
         // Content
         $mail->isHTML(true);                                        // Set email format to HTML
         $mail->Subject = "Truckbill Enquiries via Website";

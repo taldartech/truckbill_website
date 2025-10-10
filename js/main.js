@@ -143,28 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Form submission handling
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        // Get form data
-        const formData = new FormData(this);
-        const formObject = {};
-        formData.forEach((value, key) => {
-            formObject[key] = value;
-        });
-
-        // Here you would typically send the form data to a server
-        console.log('Form submitted:', formObject);
-
-        // Show success message
-        alert('Thank you for your message! We will get back to you soon.');
-        this.reset();
-    });
-}
-
 // Enhanced Animation on Scroll with Intersection Observer
 const animateOnScroll = () => {
     const elements = document.querySelectorAll('.animate-on-scroll');

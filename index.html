@@ -617,13 +617,14 @@
                 <div class="col-lg-6">
                     <div class="contact-form">
                         <h3>Send us a Message</h3>
-                        <form id="contactForm" class="needs-validation" novalidate>
+                        <form id="contactForm" class="needs-validation" onsubmit="handleContact(event)">
+                            <input type="hidden" name="userType" value="ContactUs">
                             <div class="form-group">
                                 <label for="name" class="form-label">Full Name <span
                                         class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                                    <input type="text" class="form-control" id="name" placeholder="John Doe" required name="fullName">
                                     <div class="invalid-feedback">
                                         Please enter your name.
                                     </div>
@@ -636,7 +637,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                     <input type="email" class="form-control" id="email" placeholder="your@email.com"
-                                        required>
+                                        required name="email">
                                     <div class="invalid-feedback">
                                         Please enter a valid email address.
                                     </div>
@@ -647,7 +648,7 @@
                                 <label for="phone" class="form-label">Phone Number</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                    <input type="tel" class="form-control" id="phone" placeholder="+91 XXXXXXXXXX">
+                                    <input type="tel" class="form-control" id="phone" placeholder="+91 XXXXXXXXXX" name="phoneNumber">
                                 </div>
                             </div>
 
@@ -655,7 +656,7 @@
                                 <label for="message" class="form-label">Your Message <span
                                         class="text-danger">*</span></label>
                                 <textarea class="form-control" id="message" rows="5" placeholder="How can we help you?"
-                                    required></textarea>
+                                    required name="message"></textarea>
                                 <div class="invalid-feedback">
                                     Please enter your message.
                                 </div>
@@ -1012,6 +1013,35 @@
                         toastr.success(response.message || "Form submitted successfully!");
                         $("#demoForm")[0].reset(); // Reset the form
                         $("#bookDemoModal").modal('hide');
+                    } else {
+                        toastr.error(response.message || "Something went wrong.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    toastr.error("Server error: " + error);
+                },
+                complete: function() {
+                    $("#waitloader").addClass('d-none');
+                }
+            });
+
+            return false; // Prevent form from submitting the normal way
+        }
+
+        function handleContact(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var formData = $("#contactForm").serialize(); // Serialize the form data
+            $("#waitloader").removeClass('d-none');
+            $.ajax({
+                type: "POST",
+                url: "submit.php", // Adjust this to the correct PHP file
+                data: formData,
+                dataType: "json",
+                success: function (response) {
+                    if (response.success) {
+                        toastr.success(response.message || "Form submitted successfully!");
+                        $("#contactForm")[0].reset(); // Reset the form
                     } else {
                         toastr.error(response.message || "Something went wrong.");
                     }
