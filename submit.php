@@ -40,8 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         //Recipients
         $mail->setFrom('shalindevpura19@gmail.com', 'TruckBill');
-        $mail->addAddress('team@taldartechconsultancy.com');     // Add a recipient
-        // $mail->addAddress('shalin@taldartech.in');
+        
+        $mail->addAddress('support@truckbill.in');
+        $mail->addCC('team@taldartechconsultancy.com');
+        $mail->addReplyTo($email, $fullName);
+    
         // Content
         $mail->isHTML(true);                                        // Set email format to HTML
         $mail->Subject = "Truckbill Enquiries via Website";
